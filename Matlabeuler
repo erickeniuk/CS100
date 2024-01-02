@@ -1,0 +1,53 @@
+#!/usr/bin/octave -q
+
+%Adapted From
+%Jonathan Senning <jonathan.senning@gordon.edu>
+% Gordon College
+% March 19, 1999
+% Revised April 27, 2006 to update graphing commands
+%
+% This program demonstrates the use of Euler's Method to solve the initial
+% value problem y'(t) = -2 + 3*x +4*y, y(1) = -5.
+
+% Set interval and initial condition
+
+a = 1;
+b = 2;
+y0 = 1;
+n = 4;
+
+
+
+h = ( b - a ) / n;
+x = a;
+y = y0;
+
+
+X = x;
+Y = y;
+
+
+
+for i = 1 : n
+
+  y = y + h * x * sin(x);
+
+  x = a + i * h;
+
+
+
+  X = [ X, x ];
+  Y = [ Y, y ];
+
+end
+
+
+X2 = b * [0:5*n] / (5*n);
+Y = -2 + 3 * x + 4 * y;
+
+plot( X, Y, 'o', X2, Y, '-' );
+legend( 'Euler Solution', 'Exact Solution', 'location', 'South' );
+xlabel( 'x' );
+ylabel( 'y' );
+title( sprintf( "Euler Solution (n = %d) of y'(x) = -2 + 3 * x + 4 * y, y(0) = 1", n ) );
+drawnow();
