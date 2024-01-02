@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
+// To close stdin, use CTRL+D
 int main (void) {
 
   char str[50];
